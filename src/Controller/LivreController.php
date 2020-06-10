@@ -22,9 +22,20 @@ class LivreController extends AbstractController
      */
     public function index(LivreRepository $livreRepository): Response
     {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        //$produits = $this->getDoctrine()->getRepository(Product::class)->findAll();
+        //$produits=$r->findAll();
+        $user = $this->getUser(); 
+      //  $livress=$this->repo->findAll();
+
         return $this->render('livre/index.html.twig', [
-            'livres' => $livreRepository->findAll(),
+            'livres' => $livreRepository->findAll(),'firstname'=>$user->getUsername(),
         ]);
+
+       /* return $this->render('livre/index.html.twig', [
+            'livres' => $livreRepository->findAll(),
+        ]);*/
     }
 
     /**

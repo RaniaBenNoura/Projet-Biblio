@@ -94,8 +94,9 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
             return new RedirectResponse($targetPath);
         }
 
-         return new RedirectResponse($this->urlGenerator->generate('index'));
-        //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        // For example : 
+        return new RedirectResponse($this->urlGenerator->generate('livre_index'));
+        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
     protected function getLoginUrl()

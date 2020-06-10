@@ -154,8 +154,23 @@
                   You can learn Anything
                 </h2>
                 <div>
-                  <a href="#" class="primary-btn2 mb-3 mb-sm-0">learn more</a>
-                  <a href="#" class="primary-btn ml-sm-3 ml-0">see course</a>
+                {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                  <a href="{{path('app_login')}}" class="primary-btn2 mb-3 mb-sm-0">login</a>
+                {% endif %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+							<li class="nav-item px-lg-4">
+								<span class="nav-link text-uppercase text-expanded">Vous êtes :
+									{{ app.user.firstName }}</span>
+
+							</li>
+							<li
+								class="nav-item px-lg-4">
+								<!-- <a class="nav-link text-uppercase text-expanded" href="{{ path('app_logout')}}">Se déconnecter</a> -->
+								<a name="" id="" class="primary-btn ml-sm-3 ml-0" href="{{ path('app_logout')}}" role="button">Logout</a>
+							</li>
+<br>
+						{% endif %}
+                  <a href="#" class="primary-btn ml-sm-3 ml-0">Inscription</a>
                 </div>
               </div>
             </div>
