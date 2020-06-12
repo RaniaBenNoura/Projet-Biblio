@@ -3,13 +3,28 @@
 {% block title %}Category index{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
+    
+<div class="row justify-content-center">
+  <div class="col-lg-5">
+    <div class="main_title">
+      <h1>Category index</h1>
+        <a href="{{ path('category_new') }}" class="primary-btn ml-sm-3 ml-0">Create new Category</a>
+    </div>
+  </div>
+</div>
+
+
 
     
+    <!--================ End Popular Courses Area =================-->
 
-    <a href="{{ path('category_new') }}">Create new</a>
 
 
+
+
+
+<!--================ Start Popular Courses Area =================-->
+  
 <div class="popular_courses">
       <div class="container">
         <div class="row justify-content-center">
@@ -25,22 +40,25 @@
         
         <div class="row">
           <!-- single course -->
-        {% for category in categories %}
+        
           <div class="col-lg-12">
             <div class="owl-carousel active_course">
+            {% for category in categories %}
               <div class="single_course">
                 <div class="course_head">
                   <img src="{{ asset('uploads/images/' ~ category.image) }}" />
                 </div>
                 <div class="course_content">
-                  <span class="price">$25</span>
+                  <span class="price"></span>
                   <span class="tag mb-4 d-inline-block">{{ category.name }}</span>
                   <h4 class="mb-3">
-                    <a href="{{ path('category_show', {'id': category.id}) }}">Show Detail</a>
+                    <a href="{{ path('category_show', {'id': category.id}) }}">Show Detail et all books on this category</a>
                   </h4>
+                  {% if is_granted('ROLE_ADMIN') %}
                    <h4 class="mb-3">
                     <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
                    </h4>
+                   {% endif %}
                   <p>
                     
                   </p>
@@ -61,20 +79,24 @@
                   </div>
                 </div>
               </div> 
+              {% else %}
+            
+                <p colspan="4">no records found<p>
+            
+        {% endfor %}
               </div>
 
               
             </div>
           
        
-        {% else %}
-            
-                <p colspan="4">no records found<p>
-            
-        {% endfor %}
+        
          </div>
       </div>
     </div>
     <!--================ End Popular Courses Area =================-->
+
+
+
 
 {% endblock %}

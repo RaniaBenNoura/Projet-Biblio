@@ -42,18 +42,14 @@ class Livre
      */
     private $category;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Bibliotheque", inversedBy="livres")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $bibliotheque;
+  
 
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Emprunteur")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $emprunteur;
+    //private $emprunteur;
 
     /**
      * @ORM\Column(type="integer")
@@ -125,19 +121,9 @@ class Livre
         return $this;
     }
 
-    public function getBibliotheque(): ?Bibliotheque
-    {
-        return $this->bibliotheque;
-    }
+   
 
-    public function setBibliotheque(?Bibliotheque $bibliotheque): self
-    {
-        $this->bibliotheque = $bibliotheque;
-
-        return $this;
-    }
-
-    
+    /*
     public function getEmprunteur(): ?Emprunteur
     {
         return $this->emprunteur;
@@ -146,9 +132,9 @@ class Livre
     public function setEmprunteur(?Emprunteur $emprunteur): self
     {
         $this->emprunteur = $emprunteur;
+      
 
-        return $this;
-    }
+    }*/
 
     public function getPrice(): ?int
     {

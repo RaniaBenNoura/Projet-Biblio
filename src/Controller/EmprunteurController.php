@@ -15,6 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class EmprunteurController extends AbstractController
 {
+    public function __construct()
+    {
+    }
     /**
      * @Route("/", name="emprunteur_index", methods={"GET"})
      */
