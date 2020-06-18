@@ -81,7 +81,7 @@ class LivreController extends AbstractController
             $entityManager->persist($livre);
             $entityManager->flush();
 
-            return $this->redirectToRoute('livre_index');
+            return $this->redirectToRoute('admin_livre_index');
         }
 
         return $this->render('livre/new.html.twig', [
@@ -113,7 +113,7 @@ class LivreController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('livre_index');
+            return $this->redirectToRoute('admin_livre_index');
         }
 
         return $this->render('livre/edit.html.twig', [
@@ -135,6 +135,41 @@ class LivreController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('livre_index');
+        return $this->redirectToRoute('admin_livre_index');
+    }
+
+
+    //////emprunt livre//////////
+
+
+    /**
+     * @Route("livre/{id}/emprunt", name="emprunt")
+     */
+    public function emprunterLivre($id, Request $request):Response
+    {
+        //Création du formulaire
+        $form = $this->createForm(EmprunteurType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+          $data = $form->getData();
+          $repository = $this->getDoctrine()->getRepository(Emprunteur::class);
+          $emprunteur = $repository->findOneBy([ 'numero' => $data['emprunteur'] ]);
+          $livre =  $this->getDoctrine()->getRepository(Livre::class)->find($id);
+          //On verifie si l'emprunteur existe
+          if($emprunteur) {
+            $livre->setEmprunteur($emprunteur);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($livre);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('livre_index');
+          }
+
+        }
+
+        return $this->render('livre/ajoutEmprunteur.html.twig', [
+          'id' => $id, 'form' => $form->createView()
+        ]);
     }
 }

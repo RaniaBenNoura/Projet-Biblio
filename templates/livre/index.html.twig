@@ -1,14 +1,16 @@
 {% extends 'baseLivre.html.twig' %}
 
-{% block title %}Livre index{% endblock %}
+{% block title %}Booke index{% endblock %}
 
 {% block body %}
     
     <div class="row justify-content-center">
           <div class="col-lg-5">
             <div class="main_title">
-              <h1>Livre index</h1>
-              <a href="{{ path('livre_new') }}" class="primary-btn ml-sm-3 ml-0">Create new Livre</a>
+              <h1>Book index</h1>
+              {% if is_granted('ROLE_ADMIN') %}
+              <a href="{{ path('livre_new') }}" class="primary-btn ml-sm-3 ml-0">Create new Book</a>
+              {% endif %}
             </div>
           </div>
     </div>
@@ -45,7 +47,7 @@
                   <h4 class="mb-3">
                     <a href="{{ path('livre_show', {'id': livre.id}) }}">Show Detail </a>
                   </h4>
-                  {% if is_granted('ROLE_ADMIN') %}}
+                  {% if is_granted('ROLE_ADMIN') %}
                    <h4 class="mb-3">
                     <a href="{{ path('livre_edit', {'id': livre.id}) }}">Edit</a>
                    </h4>

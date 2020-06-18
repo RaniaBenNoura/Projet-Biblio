@@ -72,12 +72,24 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{path('about')}}">About</a>
                 </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="{{path('category_index')}}">Categorie</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                 <li class="nav-item ">
+                  <a class="nav-link" href="{{path('admin_category_index')}}">Category</a>
                 </li>
+                {% else %}
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{path('category_index')}}">Category</a>
+                </li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{path('admin_livre_index')}}">Livre</a>
+                </li>
+                {% else %}
                 <li class="nav-item ">
                   <a class="nav-link" href="{{path('livre_index')}}">Livre</a>
                 </li>
+                {% endif %}
                 <li class="nav-item submenu dropdown">
                   <a
                     href="#"
@@ -114,7 +126,6 @@
                 </li>
 
 				<li class="nav-item">  
-								<!-- <a class="nav-link text-uppercase text-expanded" href="{{ path('app_logout')}}">Se déconnecter</a> -->
 							   	<a name="" id="" class="nav-link" href="{{ path('app_logout')}}" role="button">Logout</a>
 							   </li>
 				{% endif %}
@@ -149,7 +160,7 @@
                 {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
                   <a href="{{path('app_login')}}" class="primary-btn2 mb-3 mb-sm-0">login</a>
                 {% endif %}
-                  <a href="#" class="primary-btn ml-sm-3 ml-0">Inscription</a>
+                  <a href="{{path('inscription')}}" class="primary-btn ml-sm-3 ml-0">Inscription</a>
                 </div>
               </div>
             </div>
@@ -378,7 +389,7 @@
           </div>
           <div class="col-lg-4 offset-lg-1">
             <div class="register_form">
-              <h3>Courses for Free</h3>
+              <h3>Books for Free</h3>
               <p>It is high time for learning</p>
               <form
                 class="form_area"

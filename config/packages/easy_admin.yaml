@@ -1,0 +1,9 @@
+easy_admin:
+#site_name:  'Book <em style="font-size: 80%;">Administration</em>'
+ #<img src="https://symfony.com/logos/symfony_white_01.png"/>'
+   entities:
+       # List the entity class name you want to manage
+        - App\Entity\Livre
+        - App\Entity\Category
+        - App\Entity\User
+        

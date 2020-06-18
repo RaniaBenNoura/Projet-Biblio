@@ -65,13 +65,17 @@
 
                         </li>
                     </ul>
-                    <a href="#" class="primary-btn2 text-uppercase enroll rounded-0 text-white">Emprunt the Book</a>
-                    
-                   {% if is_granted('ROLE_ADMIN') %}}
-                    <a href="{{ path('livre_index') }}" class="primary-btn2 text-uppercase enroll rounded-0 text-white"> Back to the list</a>
-                    <a href="{{ path('livre_edit', {'id': livre.id}) }}" class="primary-btn2 text-uppercase enroll rounded-0 text-white">Editer the Book</a>
+                   
+                   {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('admin_livre_index') }}" class="primary-btn2 text-uppercase enroll rounded-0 text-yellow"> Back to the list</a>
+                    <a href="{{ path('livre_edit', {'id': livre.id}) }}" class="primary-btn2 text-uppercase enroll rounded-0 text-yellow">Edit the Book</a>
 
                     {{ include('livre/_delete_form.html.twig') }}
+                    {% else %}
+                    <a href="{{ path('emprunt', {'id' : livre.id}) }}" class="primary-btn2 text-uppercase enroll rounded-0 text-yellow">Emprunt the Book</a>
+                    
+                    <a href="{{ path('livre_index') }}" class="primary-btn2 text-uppercase enroll rounded-0 text-yellow"> Back to the list</a>
+                  
                     {% endif %}
 
                     <h4 class="title">Reviews</h4>

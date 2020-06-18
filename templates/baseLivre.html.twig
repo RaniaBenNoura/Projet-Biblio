@@ -72,12 +72,24 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{path('about')}}">About</a>
                 </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="{{path('category_index')}}">Categorie</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                 <li class="nav-item ">
+                  <a class="nav-link" href="{{path('admin_category_index')}}">Category</a>
                 </li>
+                {% else %}
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{path('category_index')}}">Category</a>
+                </li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{path('admin_livre_index')}}">Livre</a>
+                </li>
+                {% else %}
                 <li class="nav-item ">
                   <a class="nav-link" href="{{path('livre_index')}}">Livre</a>
                 </li>
+                {% endif %}
                 <li class="nav-item submenu dropdown">
                   <a
                     href="#"

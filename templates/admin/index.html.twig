@@ -1,0 +1,69 @@
+{% block title %}Admin - Tableau de bord{% endblock %}
+{% extends 'baseAdministration.html.twig' %}
+
+{% block body %}
+<section class="banner_area">
+      <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <div class="banner_content text-center">
+                <h2>Welcome to Dashborad</h2>
+                <div class="page_link">
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+	<div class="navbar navbar-default">
+		<a class="navbar-brand" href="{{path('index')}}">Admin Rania</a>
+		<ul class="nav navbar-nav">
+			<li class="active"> <a href="{{path('index')}}">Accueil</a> </li>
+			<li> <a href="{{path('list_category_index')}}">Catecory</a> </li>
+			<li> <a href="{{path('list_livre_index')}}">Bookts</a> </li>
+			<li> <a href="{{path('user')}}">Users</a> </li>
+		</ul>
+		    <div class="navbar-form navbar-right" style="margin-right: 5px;">
+				<a href="deconnexion.php" type="submit" class="btn btn-warning"><img src="../images/icons/logout.png" alt="IMG-LOGO" span class="glyphicon glyphicon-remove-circle"> </span> Log out</a>
+			</div>
+	</div>
+
+	<div class="container">
+
+
+
+
+		<h1 class="text-center">Tableau de bord</h1>
+
+		<ul class="list-group">
+			<li class="list-group-item">
+				Nombre des Catégoies 
+				<span class="badge">3 </span>
+			</li>
+			<li class="list-group-item">
+				Nombre des Produits
+				<span class="badge">10</span>				
+			</li>
+			<li class="list-group-item">
+				Nombre des Commandes
+				<span class="badge">15</span>
+			</li>
+			<li class="list-group-item">
+				Montant total des Commandes
+				<span class="badge">15 TND</span>
+			</li>
+		</ul>
+	</div>
+
+
+	<script src="../js/jqueryy.js"></script>
+	<script src="../js/bootstrapp.min.js"></script>
+
+
+
+ {% endblock %}

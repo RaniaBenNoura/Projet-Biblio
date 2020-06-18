@@ -42,6 +42,15 @@ class IndexController extends AbstractController
             'controller_name' => 'IndexController',
         ]);
     }
+    /**
+     * @Route("/inscription", name="inscription")
+     */
+    public function inscription()
+    {
+        return $this->render('security/inscription.html.twig', [
+            'controller_name' => 'IndexController',
+        ]);
+    }
     
     
     

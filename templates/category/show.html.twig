@@ -65,8 +65,14 @@
                     </ul>
                     
                    {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('category_index') }}" class="primary-btn2 text-uppercase enroll rounded-0 text-white"> Back to the list</a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}" class="primary-btn2 text-uppercase enroll rounded-0 text-white">Editer the Category</a>
+                   
+                  
+                   <a href="{{ path('admin_category_index') }}" class="primary-btn2 text-uppercase enroll rounded-0 text-yellow"> Back to the list</a>
+                   {% else %} 
+                   <a href="{{ path('category_index') }}" class="primary-btn2 text-uppercase enroll rounded-0 text-yellow"> Back to the list</a>
+                   {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                   <a href="{{ path('category_edit', {'id': category.id}) }}" class="primary-btn2 text-uppercase enroll rounded-0 text-yellow">Edit the Category</a>
 
                     {{ include('category/_delete_form.html.twig') }}
                     {% endif %}

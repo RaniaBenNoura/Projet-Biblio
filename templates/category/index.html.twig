@@ -8,19 +8,12 @@
   <div class="col-lg-5">
     <div class="main_title">
       <h1>Category index</h1>
+       {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('category_new') }}" class="primary-btn ml-sm-3 ml-0">Create new Category</a>
+        {% endif %}
     </div>
   </div>
 </div>
-
-
-
-    
-    <!--================ End Popular Courses Area =================-->
-
-
-
-
 
 
 <!--================ Start Popular Courses Area =================-->

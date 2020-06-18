@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
+    protected $category;
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -89,6 +90,8 @@ class Category
     public function __toString(){
         // to show the name of the Category in the select
         return $this->name;
+        //return $this->livres;
+
         // to show the id of the Category in the select
         // return $this->id;
     }
@@ -104,4 +107,6 @@ class Category
 
         return $this;
     }
+
+    
 }

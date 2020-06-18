@@ -1,13 +1,34 @@
-{% extends 'baseIndex.html.twig' %}
+{% extends 'baseAdministration.html.twig' %}
 
 {% block title %}New Livre{% endblock %}
 
 {% block body %}
-    <h1>Create new Livre</h1>
+<section class="banner_area">
+      <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <div class="banner_content text-center">
+                <h2>Welcome to Dashborad</h2>
+                <div class="page_link">
+                  <a href="{{path('index')}}">Home</a>
+                  <a href="{{path('admin_livre_index')}}">Book</a>
+                  <a href="course-details.html">New Livre </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+    <h1>Create new Book</h1>
+
 
     {{ include('livre/_form.html.twig') }}
     <br>
-    <br>
-    <a href="{{ path('livre_index') }}" class="primary-btn ml-sm-3 ml-0">back to list</a>
+
+    <a href="{{ path('admin_livre_index') }}" class="primary-btn ml-sm-3 ml-0">Back to list</a><br><br>
 
 {% endblock %}

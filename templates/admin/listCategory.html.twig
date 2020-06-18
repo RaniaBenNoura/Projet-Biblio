@@ -1,0 +1,71 @@
+{% extends 'baseAdministration.html.twig' %}
+
+{% block title %}Category index{% endblock %}
+{% block stylesheets %}
+    <style> .flash-notice { color: red } </style>
+{% endblock %}
+{% block body %}
+
+<section class="banner_area">
+      <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <div class="banner_content text-center">
+                <h2>Welcome to Dashborad</h2>
+                <div class="page_link">
+                  <a href="{{path('index')}}">Home</a>
+                  <a href="courses.html">Category</a>
+                  <a href="course-details.html">New Category </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+{% for message in app.flashes('success') %}
+    <div class="flash-success">
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    <h1>Category index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>show</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td> <img src="{{ asset('uploads/images/' ~ category.image) }}" width="70" height="70" /></img>
+                
+                <td>
+                    <a href="{{ path('category_show', {'id': category.id}) }}" class="primary-btn ml-sm-3 ml-0">show</a>
+                </td>
+                <td> 
+                    <a href="{{ path('category_edit', {'id': category.id}) }}" class="primary-btn ml-sm-3 ml-0">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('category_new') }}" class="primary-btn ml-sm-3 ml-0">Create new</a>
+    <br><br>
+{% endblock %}

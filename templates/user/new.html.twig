@@ -1,8 +1,27 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdministration.html.twig' %}
 
 {% block title %}New User{% endblock %}
 
 {% block body %}
+<section class="banner_area">
+      <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <div class="banner_content text-center">
+                <h2>Welcome to Dashborad</h2>
+                <div class="page_link">
+                  <a href="{{path('index')}}">Home</a>
+                  <a href="{{path('admin_category_index')}}">User</a>
+                  <a href="course-details.html">New User </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>  
     <h1>Create new User</h1>
 
     {{ include('user/_form.html.twig') }}

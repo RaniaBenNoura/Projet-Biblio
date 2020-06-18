@@ -1,0 +1,64 @@
+{% extends 'baseAdministration.html.twig' %}
+
+{% block title %}Livre index{% endblock %}
+
+{% block body %}
+<section class="banner_area">
+      <div class="banner_inner d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <div class="banner_content text-center">
+                <h2>Welcome to Dashborad</h2>
+                <div class="page_link">
+                  <a href="{{path('index')}}">Home</a>
+                  <a href="courses.html">Book</a>
+                  <a href="course-details.html">New Livre </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+    <h1>Livre index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Image</th>
+                <th>Resume</th>
+                <th>Show</th>
+                <th>EDit</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for livre in livres %}
+            <tr>
+                <td>{{ livre.id }}</td>
+                <td>{{ livre.titre }}</td>
+                <td>{{ livre.auteur }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ livre.image) }}" width="80" height="80" /></td>
+                <td>{{ livre.resume }}</td>
+                <td>
+                    <a href="{{ path('livre_show', {'id': livre.id}) }}" class="primary-btn ml-sm-3 ml-0">show</a>
+                </td>
+                <td>
+                    <a href="{{ path('livre_edit', {'id': livre.id}) }}" class="primary-btn ml-sm-3 ml-0">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('livre_new') }}" class="primary-btn ml-sm-3 ml-0">Create new Book</a>
+    <br><br>
+{% endblock %}
